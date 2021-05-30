@@ -24,6 +24,7 @@ public enum KeyboardLocale: String, CaseIterable, Identifiable {
     case french = "fr"
     case german = "de"
     case italian = "it"
+    case kurdish_sorani = "ckb"
     case norwegian = "nb"
     case spanish = "es"
     case swedish = "sv"
@@ -67,6 +68,7 @@ public extension KeyboardLocale {
         case .french: return "🇫🇷"
         case .german: return "🇩🇪"
         case .italian: return "🇮🇹"
+        case .kurdish_sorani: return "🇹🇯"
         case .norwegian: return "🇳🇴"
         case .swedish: return "🇸🇪"
         case .spanish: return "🇪🇸"
@@ -78,6 +80,7 @@ public extension KeyboardLocale {
      */
     var isLeftToRight: Bool {
         switch self {
+        case .kurdish_sorani: return false
         default: return true
         }
     }
