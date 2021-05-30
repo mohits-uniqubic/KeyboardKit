@@ -19,14 +19,30 @@ public protocol DeviceSpecificInputSetProvider: KeyboardInputSetProvider {
 
 public extension DeviceSpecificInputSetProvider {
     
+    /**
+     This function creates an input row, using inputs with a
+     standard upper- and lowercased version of each provided
+     character in the string.
+     */
     func row(_ chars: String) -> KeyboardInputRow {
         row(chars.chars)
     }
     
+    /**
+     This function creates an input row, using inputs with a
+     standard upper- and lowercased version of each provided
+     character.
+     */
     func row(_ chars: [String]) -> KeyboardInputRow {
         KeyboardInputRow(chars)
     }
     
+    /**
+     This function creates a device-specific input row for a
+     phone or pad, depending on the device's interface idiom.
+     The inputs use a standard upper- and lowercased version
+     of each provided character in the string.
+     */
     func row(phone: String, pad: String) -> KeyboardInputRow {
         KeyboardInputRow(device.isPhone ? phone.chars : pad.chars)
     }
