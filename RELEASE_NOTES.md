@@ -11,10 +11,13 @@ Breaking changes can still occur in minor versions, if the alternative is to not
 
 ## 4.5.3
 
-This version adds support for Kurdish Sorani.
+This version adds support for Kurdish Sorani. 
+
+It's also easier to create unicode keyboards, using the new initializers. 
 
 ### ✨ New features
 
+* `DeviceSpecificInputSetProvider` has a new `row` functions that support lower/uppercase tuples.
 * `KeyboardInput` has a new initializer, where lowercased comes before the uppercased.
 * `KeyboardInputRow` has a new initializer, where you can provide tuples.
 

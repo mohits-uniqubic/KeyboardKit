@@ -20,30 +20,50 @@ public protocol DeviceSpecificInputSetProvider: KeyboardInputSetProvider {
 public extension DeviceSpecificInputSetProvider {
     
     /**
-     This function creates an input row, using inputs with a
-     standard upper- and lowercased version of each provided
-     character in the string.
+     This function creates an input row where each character
+     in the provided string is converted to a `KeyboardInput`,
+     using its upper- and lowercased form.
      */
     func row(_ chars: String) -> KeyboardInputRow {
         row(chars.chars)
     }
     
     /**
-     This function creates an input row, using inputs with a
-     standard upper- and lowercased version of each provided
-     character.
+     This function creates an input row where each character
+     is converted to a `KeyboardInput`, using its upper- and
+     lowercased form.
      */
     func row(_ chars: [String]) -> KeyboardInputRow {
         KeyboardInputRow(chars)
     }
     
     /**
+     This function creates an input row where each character
+     tuple is converted to a `KeyboardInput` using the first
+     tuple element as lowercase and the second as uppercase.
+     */
+    func row(_ chars: [(String, String)]) -> KeyboardInputRow {
+        KeyboardInputRow(chars)
+    }
+    
+    /**
      This function creates a device-specific input row for a
      phone or pad, depending on the device's interface idiom.
-     The inputs use a standard upper- and lowercased version
-     of each provided character in the string.
+     Every character tuple is converted to a `KeyboardInput`,
+     using the first element as lowercase then the second as
+     uppercase.
+     */
+    func row(phone: [(String, String)], pad: [(String, String)]) -> KeyboardInputRow {
+        device.isPhone ? row(phone) : row(pad)
+    }
+    
+    /**
+     This function creates a device-specific input row for a
+     phone or pad, depending on the device's interface idiom.
+     Each character in the provided string is converted to a
+     `KeyboardInput` using its upper- and lowercased form.
      */
     func row(phone: String, pad: String) -> KeyboardInputRow {
-        KeyboardInputRow(device.isPhone ? phone.chars : pad.chars)
+        device.isPhone ? row(phone) : row(pad)
     }
 }
