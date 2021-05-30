@@ -21,8 +21,8 @@ public struct KeyboardInput: Equatable {
     
     public init(_ char: String) {
         self.neutral = char
-        self.uppercased = char.uppercased()
         self.lowercased = char.lowercased()
+        self.uppercased = char.uppercased()
     }
     
     public init(
@@ -30,13 +30,22 @@ public struct KeyboardInput: Equatable {
         uppercased: String,
         lowercased: String) {
         self.neutral = neutral
-        self.uppercased = uppercased
         self.lowercased = lowercased
+        self.uppercased = uppercased
+    }
+    
+    public init(
+        neutral: String,
+        lowercased: String,
+        uppercased: String) {
+        self.neutral = neutral
+        self.lowercased = lowercased
+        self.uppercased = uppercased
     }
     
     public let neutral: String
-    public let uppercased: String
     public let lowercased: String
+    public let uppercased: String
     
     public func character(for casing: KeyboardCasing) -> String {
         switch casing {
