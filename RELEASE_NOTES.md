@@ -16,6 +16,7 @@ This version adds support for Kurdish Sorani.
 ### ✨ New features
 
 * `KeyboardInput` has a new initializer, where lowercased comes before the uppercased.
+* `KeyboardInputRow` has a new initializer, where you can provide tuples.
 
 
 ## 4.5.2

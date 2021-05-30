@@ -24,10 +24,27 @@ public typealias KeyboardInputRow = [KeyboardInput]
 
 public extension KeyboardInputRow {
     
-    init(_ row: [String]) {
-        self = row.map { KeyboardInput($0) }
+    /**
+     Create an input row where each input uses the lower and
+     uppercased version of each provided character.
+     */
+    init(_ chars: [String]) {
+        self = chars.map { KeyboardInput($0) }
     }
     
+    /**
+     Create an input row where each input maps each tuple to
+     a lowercased and uppercased string, in that order.
+     */
+    init(_ chars: [(String, String)]) {
+        self = chars.map { KeyboardInput(
+            neutral: $0.0, lowercased: $0.0, uppercased: $0.1)
+        }
+    }
+    
+    /**
+     Get all characters form all rows for a certain casing.
+     */
     func characters(for casing: KeyboardCasing = .lowercased) -> [String] {
         map { $0.character(for: casing) }
     }
