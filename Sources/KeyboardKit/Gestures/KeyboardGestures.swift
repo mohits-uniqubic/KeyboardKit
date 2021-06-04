@@ -62,11 +62,7 @@ struct KeyboardGestures<Content: View>: View {
     var body: some View {
         view.overlay(GeometryReader { geo in
             Color.clearInteractable
-                .gesture(dragGesture(for: geo))
-                .simultaneousGesture(tapGesture)
-                .simultaneousGesture(doubleTapGesture)
-                .simultaneousGesture(longPressGesture)
-                .simultaneousGesture(longPressDragGesture(for: geo))
+                .onTapGesture(perform: handleTapGesture)
         })
     }
 }
