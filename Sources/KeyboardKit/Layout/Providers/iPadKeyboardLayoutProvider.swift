@@ -235,7 +235,8 @@ private extension KeyboardContext {
     
     var previewImageName: String {
         let language = locale.languageCode ?? ""
-        let keyboardType = KeyboardType.previewImageSegment
+        let myKeyboardtype = KeyboardType.alphabetic
+        let keyboardType = myKeyboardType.previewImageSegment
         let orientation = screenOrientation.previewImageSegment
         return "iPad_\(language)_\(keyboardType)_\(orientation)"
     }
